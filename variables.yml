@@ -1,0 +1,7 @@
+---
+
+git_repo_url: "git@github.com:agtsanoop/flask_app.git"
+clone_directory: "/var/flaskapp/"
+docker_login_user: ""   // Use you docker Hub user name
+docker_login_pass: "password"         // user your docker password
+docker_image: "sanoopagt/flaskapplication"
