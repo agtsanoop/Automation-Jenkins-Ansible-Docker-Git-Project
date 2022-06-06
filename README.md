@@ -248,6 +248,36 @@ Under advanced section, make sure Disable the host SSH key check is disabled.
 7. Under Vault Credentials >> add Jenkins >> refer screnshot to add vault logins >> Then under Vault credential choose "Vault password"
           
    ![jkn4](https://user-images.githubusercontent.com/87975855/172177194-8b61b763-93c5-4885-9dd8-454c3c2ced40.png)
+   
+8. Add ssh details in Credentials.
 
+
+![jkn5](https://user-images.githubusercontent.com/87975855/172193301-61a0bfdc-363b-4bf5-a887-f30b55559e3d.png)
+
+Add Kind as "SSH username / private key" , User name "ec2-user" and private key "you ssh pem file"
    
-   
+![image](https://user-images.githubusercontent.com/87975855/172193379-f78b6b90-8556-4233-9b7a-db77d122862c.png)
+
+9. Manually run Jenkins Job and verify it is working fine. Ie, Select Job and click on "Build now"
+
+![image](https://user-images.githubusercontent.com/87975855/172193483-4a15a58c-f9f0-48e1-a457-4198ad281176.png)
+
+
+# Automating the build and test process using git hub hooks
+
+In order to do this we need to configure jenkins payload url in Git repository
+
+1. Go to your Git repo , under security >> choose Webhooks
+
+   ![image](https://user-images.githubusercontent.com/87975855/172193628-7dbebad3-867a-40d0-b9a2-b41af50b3a5f.png)
+
+2. Acces your Jenkin Admin dashboard >> Select your Jon and click on "Configure" and select "GitHub hook trigger for GITScm polling"
+
+![image](https://user-images.githubusercontent.com/87975855/172193809-81f6e113-20b0-4b8e-be44-ce9f3d0feb21.png)
+
+
+# Result
+
+Once the developer make changes in git repo, An alert is triggered based on it Jenkins run the job. ie A new image is pushed to Docker Hub from the 'Build' host, which is pulled by 'Test' host to create a Docker Container.
+
+![image](https://user-images.githubusercontent.com/87975855/172194175-313520c6-9673-4379-8b1d-d931e204b5ad.png)
